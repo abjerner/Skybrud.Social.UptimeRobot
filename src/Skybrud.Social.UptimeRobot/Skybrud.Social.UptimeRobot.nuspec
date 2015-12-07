@@ -1,0 +1,16 @@
+﻿<?xml version="1.0"?>
+<package >
+  <metadata>
+    <id>$id$</id>
+    <version>$version$</version>
+    <title>$title$</title>
+    <authors>Anders Bjerner</authors>
+    <owners>Anders Bjerner</owners>
+    <licenseUrl>https://github.com/abjerner/Skybrud.Social.UptimeRobot/blob/master/LICENSE.md</licenseUrl>
+    <projectUrl>https://github.com/abjerner/Skybrud.Social.UptimeRobot</projectUrl>
+    <iconUrl>http://www.skybrud.dk/img/5431sk/icon/favicon.ico</iconUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>$description$</description>
+    <tags>Uptime Robot, Social, Skybrud</tags>
+  </metadata>
+</package>
