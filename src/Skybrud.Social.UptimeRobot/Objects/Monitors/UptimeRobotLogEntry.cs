@@ -32,7 +32,7 @@ namespace Skybrud.Social.UptimeRobot.Objects.Monitors {
         /// </summary>
         /// <param name="obj">The instance of <code>JObject</code> representing the log entry.</param>
         protected UptimeRobotLogEntry(JObject obj) : base(obj) {
-            Type = obj.GetInt32("type", ParseEnum<UptimeRobotLogType>);
+            Type = obj.GetEnum<UptimeRobotLogType>("type");
             DateTime = obj.GetString("datetime", ParseDate);
         }
 

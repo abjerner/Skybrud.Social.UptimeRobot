@@ -1,6 +1,9 @@
-﻿using System;
-using System.Net;
+﻿using System.Net;
+using Newtonsoft.Json.Linq;
+using Skybrud.Essentials.Json.Extensions;
 using Skybrud.Social.Http;
+using Skybrud.Social.UptimeRobot.Exceptions;
+using Skybrud.Social.UptimeRobot.Objects.Errors;
 
 namespace Skybrud.Social.UptimeRobot.Responses {
 
@@ -12,25 +15,35 @@ namespace Skybrud.Social.UptimeRobot.Responses {
         #region Constructors
 
         /// <summary>
-        /// Initializes a new instance of <code>UptimeRobotResponse</code> from the specified <code>response</code>.
+        /// Initializes a new instance of from the specified <paramref name="response"/>.
         /// </summary>
         /// <param name="response">The response to be parsed.</param>
         protected UptimeRobotResponse(SocialHttpResponse response) : base(response) { }
 
         #endregion
-        
-        #region Static methods
 
+        #region Static methods
+        
         /// <summary>
-        /// Validates the specified <code>response</code>.
+        /// Validates the specified <paramref name="response"/>.
         /// </summary>
         /// <param name="response">The response to be validated.</param>
-        public static void ValidateResponse(SocialHttpResponse response) {
+        public static JObject ValidateResponse(SocialHttpResponse response) {
 
-            // Skip error checking if the server responds with an OK status code
-            if (response.StatusCode == HttpStatusCode.OK) return;
+            // Valid responses should be of the type "application/json"
+            if (!response.ContentType.StartsWith("application/json")) throw new UptimeRobotHttpException(response);
+            
+            // Parse the JSON body
+            JObject body = ParseJsonObject(response.Body);
 
-            throw new Exception("Oh noes!!!\n\n" + response.Body);
+            // The API always responds with "200 OK", so we need to check the "stat" property in the envelope instead
+            if (body.GetString("stat") == "ok") return body;
+                
+            // Parse the error
+            UptimeRobotError error = UptimeRobotError.Parse(body);
+
+            // Throw the exception
+            throw new UptimeRobotHttpException(response, error);
 
         }
 
@@ -55,7 +68,7 @@ namespace Skybrud.Social.UptimeRobot.Responses {
         #region Constructors
 
         /// <summary>
-        /// Initializes a new instance of <code>UptimeRobotResponse</code> from the specified <code>response</code>.
+        /// Initializes a new instance of from the specified <paramref name="response"/>.
         /// </summary>
         /// <param name="response">The response to be parsed.</param>
         protected UptimeRobotResponse(SocialHttpResponse response) : base(response) { }

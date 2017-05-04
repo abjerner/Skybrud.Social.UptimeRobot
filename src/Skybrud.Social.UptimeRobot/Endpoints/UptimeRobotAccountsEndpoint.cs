@@ -37,7 +37,7 @@ namespace Skybrud.Social.UptimeRobot.Endpoints {
         /// <summary>
         /// Gets the details of the account behind the current <code>apiKey</code>.
         /// </summary>
-        /// <returns>Returns an instance of <code>UptimeRobotGetAccountDetailsResponse</code> representing the response.</returns>
+        /// <returns>An instance of <see cref="UptimeRobotGetAccountDetailsResponse"/> representing the response.</returns>
         public UptimeRobotGetAccountDetailsResponse GetAccountDetails() {
             return UptimeRobotGetAccountDetailsResponse.ParseResponse(Raw.GetAccountDetails());
         }

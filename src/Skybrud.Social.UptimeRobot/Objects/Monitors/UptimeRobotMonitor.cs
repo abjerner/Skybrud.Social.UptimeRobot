@@ -1,6 +1,7 @@
 using System;
 using Newtonsoft.Json.Linq;
 using Skybrud.Essentials.Json.Extensions;
+using Skybrud.Essentials.Time;
 using Skybrud.Social.UptimeRobot.Enums;
 
 namespace Skybrud.Social.UptimeRobot.Objects.Monitors {
@@ -49,6 +50,11 @@ namespace Skybrud.Social.UptimeRobot.Objects.Monitors {
         public UptimeRobotMonitorStatus Status { get; private set; }
 
         /// <summary>
+        /// Gets a timestamp for when the monitor was created.
+        /// </summary>
+        public EssentialsDateTime Created { get; private set; }
+
+        /// <summary>
         /// Gets the alltime uptime ratio of the monitor.
         /// </summary>
         public float AlltimeUptimeRatio { get; private set; }
@@ -66,17 +72,18 @@ namespace Skybrud.Social.UptimeRobot.Objects.Monitors {
         #region Constructors
 
         /// <summary>
-        /// Initializes a new instance from the specified <code>obj</code>.
+        /// Initializes a new instance from the specified <paramref name="obj"/>.
         /// </summary>
-        /// <param name="obj">The instance of <code>JObject</code> representing the monitor.</param>
+        /// <param name="obj">The instance of <see cref="JObject"/> representing the monitor.</param>
         protected UptimeRobotMonitor(JObject obj) : base(obj) {
             Id = obj.GetInt32("id");
-            FriendlyName = obj.GetString("friendlyname");
+            FriendlyName = obj.GetString("friendly_name");
             Url = obj.GetString("url");
-            Type = obj.GetInt32("type", ParseEnum<UptimeRobotMonitorType>);
-            SubType = obj.GetInt32("type", ParseEnum<UptimeRobotMonitorSubType>);
-            Interval = obj.GetInt32("interval", x => TimeSpan.FromSeconds(x));
-            Status = obj.GetInt32("status", ParseEnum<UptimeRobotMonitorStatus>);
+            Type = obj.GetEnum<UptimeRobotMonitorType>("type");
+            SubType = obj.GetEnum<UptimeRobotMonitorSubType>("type");
+            Interval = obj.GetDouble("interval", TimeSpan.FromSeconds);
+            Status = obj.GetEnum<UptimeRobotMonitorStatus>("status");
+            Created = obj.GetInt32("create_datetime", EssentialsDateTime.FromUnixTimestamp);
             AlltimeUptimeRatio = obj.GetFloat("alltimeuptimeratio");
             Log = obj.GetArray("log", UptimeRobotLogEntry.Parse);
         }
@@ -86,10 +93,10 @@ namespace Skybrud.Social.UptimeRobot.Objects.Monitors {
         #region Static methods
 
         /// <summary>
-        /// Parses the specified <code>obj</code> into an instance of <code>UptimeRobotMonitor</code>.
+        /// Parses the specified <paramref name="obj"/> into an instance of <see cref="UptimeRobotMonitor"/>.
         /// </summary>
-        /// <param name="obj">The instance of <code>JObject</code> to be parsed.</param>
-        /// <returns>Returns an instance of <code>UptimeRobotMonitor</code>.</returns>
+        /// <param name="obj">The instance of <see cref="JObject"/> to be parsed.</param>
+        /// <returns>An instance of <see cref="UptimeRobotMonitor"/>.</returns>
         public static UptimeRobotMonitor Parse(JObject obj) {
             return obj == null ? null : new UptimeRobotMonitor(obj);
         }

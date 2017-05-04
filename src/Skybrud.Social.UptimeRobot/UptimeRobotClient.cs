@@ -52,15 +52,14 @@ namespace Skybrud.Social.UptimeRobot {
         
         protected override void PrepareHttpRequest(SocialHttpRequest request) {
 
-            if (request.QueryString == null) request.QueryString = new SocialHttpQueryString();
+            if (request.PostData == null) request.PostData = new SocialHttpPostData();
 
-            // Append the access token to the query string
+            // Append the access token to the POST data
             if (!String.IsNullOrWhiteSpace(ApiKey)) {
-                request.QueryString.Add("apiKey", ApiKey);
+                request.PostData.Add("api_key", ApiKey);
             }
 
-            request.QueryString.Add("format", "json");
-            request.QueryString.Add("noJsonCallback", "1");
+            request.PostData.Add("format", "json");
         
         }
 

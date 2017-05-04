@@ -7,7 +7,7 @@ namespace Skybrud.Social.UptimeRobot.Objects {
     /// <summary>
     /// Class representing a basic response from the Uptime Robot API.
     /// </summary>
-    public class UptimeRobotResponseBody : UptimeRobotObject {
+    public class UptimeRobotEnvelope : UptimeRobotObject {
 
         #region Properties
 
@@ -21,10 +21,10 @@ namespace Skybrud.Social.UptimeRobot.Objects {
         #region Constructors
 
         /// <summary>
-        /// Initializes a new instance from the specified <code>obj</code>.
+        /// Initializes a new instance from the specified <paramref name="obj"/>.
         /// </summary>
-        /// <param name="obj">The instance of <code>JObject</code> representing the response body.</param>
-        protected UptimeRobotResponseBody(JObject obj) : base(obj) {
+        /// <param name="obj">The instance of <see cref="JObject"/> representing the response body.</param>
+        protected UptimeRobotEnvelope(JObject obj) : base(obj) {
             Status = obj.GetEnum<UptimeRobotStatus>("stat");
         }
 

@@ -32,7 +32,7 @@ namespace Skybrud.Social.UptimeRobot.Endpoints.Raw {
         /// </summary>
         /// <returns>An instance of <see cref="SocialHttpResponse"/> representing the raw response.</returns>
         public SocialHttpResponse GetMonitors() {
-            return Client.DoHttpGetRequest("https://api.uptimerobot.com/getMonitors");
+            return Client.DoHttpPostRequest("https://api.uptimerobot.com/v2/getMonitors");
         }
 
         /// <summary>
@@ -41,7 +41,7 @@ namespace Skybrud.Social.UptimeRobot.Endpoints.Raw {
         /// <param name="options">The options for the call to the API.</param>
         /// <returns>An instance of <see cref="SocialHttpResponse"/> representing the raw response.</returns>
         public SocialHttpResponse GetMonitors(UptimeRobotGetMonitorsOptions options) {
-            return Client.DoHttpGetRequest("https://api.uptimerobot.com/getMonitors", options);
+            return Client.DoHttpPostRequest("https://api.uptimerobot.com/v2/getMonitors", options);
         }
 
         #endregion

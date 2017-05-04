@@ -11,6 +11,11 @@ namespace Skybrud.Social.UptimeRobot.Objects.Accounts {
         #region Properties
 
         /// <summary>
+        /// Gets the email address of the authenticated account.
+        /// </summary>
+        public string Email { get; private set; }
+
+        /// <summary>
         /// Gets the maximum amount of monitors allowed within the current plan.
         /// </summary>
         public int MonitorLimit { get; private set; }
@@ -40,15 +45,16 @@ namespace Skybrud.Social.UptimeRobot.Objects.Accounts {
         #region Constructors
 
         /// <summary>
-        /// Initializes a new instance from the specified <code>obj</code>.
+        /// Initializes a new instance from the specified <paramref name="obj"/>.
         /// </summary>
-        /// <param name="obj">The instance of <code>JObject</code> representing the account details.</param>
+        /// <param name="obj">The instance of <see cref="JObject"/> representing the account details.</param>
         protected UptimeRobotAccountDetails(JObject obj) : base(obj) {
-            MonitorLimit = obj.GetInt32("monitorLimit");
-            MonitorInterval = obj.GetInt32("monitorInterval");
-            UpMonitors = obj.GetInt32("upMonitors");
-            DownMonitors = obj.GetInt32("downMonitors");
-            PausedMonitors = obj.GetInt32("pausedMonitors");
+            Email = obj.GetString("email");
+            MonitorLimit = obj.GetInt32("monitor_limit");
+            MonitorInterval = obj.GetInt32("monitor_interval");
+            UpMonitors = obj.GetInt32("up_monitors");
+            DownMonitors = obj.GetInt32("down_monitors");
+            PausedMonitors = obj.GetInt32("paused_monitors");
         }
 
         #endregion
@@ -56,10 +62,10 @@ namespace Skybrud.Social.UptimeRobot.Objects.Accounts {
         #region Static methods
 
         /// <summary>
-        /// Parses the specified <code>obj</code> into an instance of <code>UptimeRobotAccountDetails</code>.
+        /// Parses the specified <see cref="JObject"/> into an instance of <see cref="UptimeRobotAccountDetails"/>.
         /// </summary>
-        /// <param name="obj">The instance of <code>JObject</code> to be parsed.</param>
-        /// <returns>Returns an instance of <code>UptimeRobotAccountDetails</code>.</returns>
+        /// <param name="obj">The instance of <see cref="JObject"/> to be parsed.</param>
+        /// <returns>Returns an instance of <see cref="UptimeRobotAccountDetails"/>.</returns>
         public static UptimeRobotAccountDetails Parse(JObject obj) {
             return obj == null ? null : new UptimeRobotAccountDetails(obj);
         }

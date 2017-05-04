@@ -19,20 +19,6 @@ namespace Skybrud.Social.UptimeRobot.Objects {
 
         #endregion
 
-        #region Member methods
-
-        /// <summary>
-        /// Parses an enum from the specified <paramref name="ordinal"/>.
-        /// </summary>
-        /// <typeparam name="T">The type of the enum.</typeparam>
-        /// <param name="ordinal">The ordinal of the enum.</param>
-        /// <returns>An instance of <typeparamref name="T"/>.</returns>
-        protected T ParseEnum<T>(int ordinal) {
-            return (T) Enum.ToObject(typeof(T), ordinal);
-        }
-
-        #endregion
-
     }
 
 }

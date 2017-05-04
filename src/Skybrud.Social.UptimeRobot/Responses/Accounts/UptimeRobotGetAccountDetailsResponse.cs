@@ -8,7 +8,7 @@ namespace Skybrud.Social.UptimeRobot.Responses.Accounts {
     /// <summary>
     /// Class representing the response of a call to get account details of a Uptime Robot user.
     /// </summary>
-    public class UptimeRobotGetAccountDetailsResponse : UptimeRobotResponse<UptimeRobotAccountResponseBody> {
+    public class UptimeRobotGetAccountDetailsResponse : UptimeRobotResponse<UptimeRobotAccountEnvelope> {
 
         #region Constructors
 
@@ -36,7 +36,7 @@ namespace Skybrud.Social.UptimeRobot.Responses.Accounts {
 
             // Initialize the response object
             return new UptimeRobotGetAccountDetailsResponse(response) {
-                Body = UptimeRobotAccountResponseBody.Parse(xml)
+                Body = UptimeRobotAccountEnvelope.Parse(xml)
             };
 
         }

@@ -6,7 +6,7 @@ namespace Skybrud.Social.UptimeRobot.Objects.Accounts {
     /// <summary>
     /// Class representing the response body of a call to get account details of a Uptime Robot user.
     /// </summary>
-    public class UptimeRobotAccountResponseBody : UptimeRobotResponseBody {
+    public class UptimeRobotAccountEnvelope : UptimeRobotEnvelope {
 
         #region Properties
 
@@ -20,10 +20,10 @@ namespace Skybrud.Social.UptimeRobot.Objects.Accounts {
         #region Constructors
 
         /// <summary>
-        /// Initializes a new instance from the specified <code>obj</code>.
+        /// Initializes a new instance from the specified <paramref name="obj"/>.
         /// </summary>
-        /// <param name="obj">The instance of <code>JObject</code> representing the response body.</param>
-        protected UptimeRobotAccountResponseBody(JObject obj) : base(obj) {
+        /// <param name="obj">The instance of <see cref="JObject"/> representing the response body.</param>
+        protected UptimeRobotAccountEnvelope(JObject obj) : base(obj) {
             Account = obj.GetObject("account", UptimeRobotAccountDetails.Parse);
         }
 
@@ -32,12 +32,12 @@ namespace Skybrud.Social.UptimeRobot.Objects.Accounts {
         #region Static methods
 
         /// <summary>
-        /// Parses the specified <code>obj</code> into an instance of <code>UptimeRobotAccountResponseBody</code>.
+        /// Parses the specified <paramref name="obj"/> into an instance of <see cref="UptimeRobotAccountEnvelope"/>.
         /// </summary>
-        /// <param name="obj">The instance of <code>JObject</code> to be parsed.</param>
-        /// <returns>Returns an instance of <code>UptimeRobotAccountResponseBody</code>.</returns>
-        public static UptimeRobotAccountResponseBody Parse(JObject obj) {
-            return obj == null ? null : new UptimeRobotAccountResponseBody(obj);
+        /// <param name="obj">The instance of <see cref="JObject"/> to be parsed.</param>
+        /// <returns>An instance of <see cref="UptimeRobotAccountEnvelope"/>.</returns>
+        public static UptimeRobotAccountEnvelope Parse(JObject obj) {
+            return obj == null ? null : new UptimeRobotAccountEnvelope(obj);
         }
 
         #endregion
