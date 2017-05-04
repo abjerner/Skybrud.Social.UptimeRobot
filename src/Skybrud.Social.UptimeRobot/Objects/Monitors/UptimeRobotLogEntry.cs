@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Globalization;
 using Newtonsoft.Json.Linq;
-using Skybrud.Social.Json.Extensions.JObject;
+using Skybrud.Essentials.Json.Extensions;
 using Skybrud.Social.UptimeRobot.Enums;
 
 namespace Skybrud.Social.UptimeRobot.Objects.Monitors {
@@ -32,7 +32,7 @@ namespace Skybrud.Social.UptimeRobot.Objects.Monitors {
         /// </summary>
         /// <param name="obj">The instance of <code>JObject</code> representing the log entry.</param>
         protected UptimeRobotLogEntry(JObject obj) : base(obj) {
-            Type = obj.GetInt32("type", UptimeRobotHelpers.ParseEnum<UptimeRobotLogType>);
+            Type = obj.GetInt32("type", ParseEnum<UptimeRobotLogType>);
             DateTime = obj.GetString("datetime", ParseDate);
         }
 

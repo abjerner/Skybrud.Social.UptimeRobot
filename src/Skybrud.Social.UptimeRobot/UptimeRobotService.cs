@@ -1,4 +1,5 @@
-﻿using Skybrud.Social.UptimeRobot.Endpoints;
+﻿using System;
+using Skybrud.Social.UptimeRobot.Endpoints;
 
 namespace Skybrud.Social.UptimeRobot {
 
@@ -43,14 +44,16 @@ namespace Skybrud.Social.UptimeRobot {
         /// </summary>
         /// <param name="apiKey">The API key of an Uptime Robot user.</param>
         public static UptimeRobotService CreateFromApiKey(string apiKey) {
+            if (String.IsNullOrWhiteSpace(apiKey)) throw new ArgumentNullException("apiKey");
             return new UptimeRobotService(new UptimeRobotClient(apiKey));
         }
 
         /// <summary>
         /// Initializes a new service based on the specified client.
         /// </summary>
-        /// <param name="client">The OAuth client to use.</param>
+        /// <param name="client">The client to use.</param>
         public static UptimeRobotService CreateFromOAuthClient(UptimeRobotClient client) {
+            if (client == null) throw new ArgumentNullException("client");
             return new UptimeRobotService(client);
         }
 

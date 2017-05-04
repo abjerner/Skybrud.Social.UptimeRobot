@@ -38,16 +38,16 @@ namespace Skybrud.Social.UptimeRobot.Endpoints {
         /// <summary>
         /// Gets a list of monitors.
         /// </summary>
-        /// <returns>Returns an instance of <code>UptimeRobotGetMonitorsResponse</code> representing the response.</returns>
+        /// <returns>An instance of <see cref="UptimeRobotGetMonitorsResponse"/> representing the response.</returns>
         public UptimeRobotGetMonitorsResponse GetMonitors() {
             return UptimeRobotGetMonitorsResponse.ParseResponse(Raw.GetMonitors());
         }
 
         /// <summary>
-        /// Gets a list of monitors matching the specified <code>options</code>.
+        /// Gets a list of monitors matching the specified <paramref name="options"/>.
         /// </summary>
         /// <param name="options">The options for the call to the API.</param>
-        /// <returns>Returns an instance of <code>UptimeRobotGetMonitorsResponse</code> representing the response.</returns>
+        /// <returns>An instance of <see cref="UptimeRobotGetMonitorsResponse"/> representing the response.</returns>
         public UptimeRobotGetMonitorsResponse GetMonitors(UptimeRobotGetMonitorsOptions options) {
             return UptimeRobotGetMonitorsResponse.ParseResponse(Raw.GetMonitors(options));
         }

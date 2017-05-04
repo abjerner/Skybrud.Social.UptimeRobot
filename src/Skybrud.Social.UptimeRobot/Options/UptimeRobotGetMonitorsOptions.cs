@@ -1,12 +1,12 @@
 ﻿using Skybrud.Social.Http;
-using Skybrud.Social.Interfaces;
+using Skybrud.Social.Interfaces.Http;
 
 namespace Skybrud.Social.UptimeRobot.Options {
     
     /// <summary>
     /// Class representing the options for a call to get the monitors of the current user.
     /// </summary>
-    public class UptimeRobotGetMonitorsOptions : IGetOptions {
+    public class UptimeRobotGetMonitorsOptions : IHttpGetOptions {
 
         #region Properties
 
@@ -30,11 +30,11 @@ namespace Skybrud.Social.UptimeRobot.Options {
         #region Member methods
 
         /// <summary>
-        /// Gets an instance of <code>SocialQueryString</code> representing the GET parameters.
+        /// Gets an instance of <see cref="IHttpQueryString"/> representing the GET parameters.
         /// </summary>
-        public SocialQueryString GetQueryString() {
-            
-            SocialQueryString query = new SocialQueryString();
+        public IHttpQueryString GetQueryString() {
+
+            SocialHttpQueryString query = new SocialHttpQueryString();
 
             if (Logs) query.Add("logs", "1");
             if (Offset > 0) query.Add("offset", Offset);

@@ -1,6 +1,6 @@
 using System;
 using Newtonsoft.Json.Linq;
-using Skybrud.Social.Json.Extensions.JObject;
+using Skybrud.Essentials.Json.Extensions;
 using Skybrud.Social.UptimeRobot.Enums;
 
 namespace Skybrud.Social.UptimeRobot.Objects.Monitors {
@@ -73,10 +73,10 @@ namespace Skybrud.Social.UptimeRobot.Objects.Monitors {
             Id = obj.GetInt32("id");
             FriendlyName = obj.GetString("friendlyname");
             Url = obj.GetString("url");
-            Type = obj.GetInt32("type", UptimeRobotHelpers.ParseEnum<UptimeRobotMonitorType>);
-            SubType = obj.GetInt32("type", UptimeRobotHelpers.ParseEnum<UptimeRobotMonitorSubType>);
+            Type = obj.GetInt32("type", ParseEnum<UptimeRobotMonitorType>);
+            SubType = obj.GetInt32("type", ParseEnum<UptimeRobotMonitorSubType>);
             Interval = obj.GetInt32("interval", x => TimeSpan.FromSeconds(x));
-            Status = obj.GetInt32("status", UptimeRobotHelpers.ParseEnum<UptimeRobotMonitorStatus>);
+            Status = obj.GetInt32("status", ParseEnum<UptimeRobotMonitorStatus>);
             AlltimeUptimeRatio = obj.GetFloat("alltimeuptimeratio");
             Log = obj.GetArray("log", UptimeRobotLogEntry.Parse);
         }
