@@ -2,7 +2,7 @@
 using Skybrud.Essentials.Json.Extensions;
 using Skybrud.Social.Http;
 using Skybrud.Social.UptimeRobot.Exceptions;
-using Skybrud.Social.UptimeRobot.Objects.Errors;
+using Skybrud.Social.UptimeRobot.Models.Errors;
 
 namespace Skybrud.Social.UptimeRobot.Responses {
 

@@ -12,7 +12,15 @@ namespace Skybrud.Social.UptimeRobot.Responses.Accounts {
 
         #region Constructors
 
-        private UptimeRobotGetAccountDetailsResponse(SocialHttpResponse response) : base(response) { }
+        private UptimeRobotGetAccountDetailsResponse(SocialHttpResponse response) : base(response) {
+
+            // Validate the response
+            JObject body = ValidateResponse(response);
+
+            // Parse the response body
+            Body = UptimeRobotAccountEnvelope.Parse(body);
+
+        }
 
         #endregion
 
@@ -24,21 +32,8 @@ namespace Skybrud.Social.UptimeRobot.Responses.Accounts {
         /// <param name="response">The response to be parsed.</param>
         /// <returns>An instance of <see cref="UptimeRobotGetAccountDetailsResponse"/>.</returns>
         public static UptimeRobotGetAccountDetailsResponse ParseResponse(SocialHttpResponse response) {
-
-            // Some input validation
             if (response == null) throw new ArgumentNullException(nameof(response));
-            
-            // Validate the response
-            ValidateResponse(response);
-
-            // Parse the JSON into an instance of JObject
-            JObject xml = JObject.Parse(response.Body);
-
-            // Initialize the response object
-            return new UptimeRobotGetAccountDetailsResponse(response) {
-                Body = UptimeRobotAccountEnvelope.Parse(xml)
-            };
-
+            return new UptimeRobotGetAccountDetailsResponse(response);
         }
 
         #endregion
