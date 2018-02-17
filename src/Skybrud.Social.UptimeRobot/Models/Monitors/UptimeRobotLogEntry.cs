@@ -2,7 +2,6 @@
 using System.Globalization;
 using Newtonsoft.Json.Linq;
 using Skybrud.Essentials.Json.Extensions;
-using Skybrud.Social.UptimeRobot.Enums;
 
 namespace Skybrud.Social.UptimeRobot.Models.Monitors {
 

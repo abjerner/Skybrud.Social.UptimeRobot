@@ -33,7 +33,7 @@ namespace Skybrud.Social.UptimeRobot.Endpoints {
         #region Member methods
 
         /// <summary>
-        /// Gets the details of the account behind the current <c>apiKey</c>.
+        /// Gets the details of the account behind the current <see cref="UptimeRobotClient.ApiKey"/>.
         /// </summary>
         /// <returns>An instance of <see cref="UptimeRobotGetAccountDetailsResponse"/> representing the response.</returns>
         public UptimeRobotGetAccountDetailsResponse GetAccountDetails() {

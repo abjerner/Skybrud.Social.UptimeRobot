@@ -1,4 +1,4 @@
-﻿namespace Skybrud.Social.UptimeRobot.Enums {
+﻿namespace Skybrud.Social.UptimeRobot.Models.AlertContacts {
     
     /// <summary>
     /// Enum class representing the type of an alert contact.

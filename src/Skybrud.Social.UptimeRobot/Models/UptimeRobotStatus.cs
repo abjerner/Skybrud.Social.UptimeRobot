@@ -1,4 +1,4 @@
-﻿namespace Skybrud.Social.UptimeRobot.Enums {
+﻿namespace Skybrud.Social.UptimeRobot.Models {
     
     /// <summary>
     /// Enum class representing the status of a call to the Uptime Robot API.
