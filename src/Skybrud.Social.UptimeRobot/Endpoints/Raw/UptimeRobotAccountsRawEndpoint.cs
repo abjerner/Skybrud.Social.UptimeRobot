@@ -27,7 +27,7 @@ namespace Skybrud.Social.UptimeRobot.Endpoints.Raw {
         #region Member methods
 
         /// <summary>
-        /// Gets the details of the account behind the current <code>apiKey</code>.
+        /// Gets the details of the account behind the current <c>apiKey</c>.
         /// </summary>
         /// <returns>An instance of <see cref="SocialHttpResponse"/> representing the response.</returns>
         public SocialHttpResponse GetAccountDetails() {

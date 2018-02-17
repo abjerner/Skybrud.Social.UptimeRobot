@@ -13,17 +13,17 @@ namespace Skybrud.Social.UptimeRobot.Objects.Common {
         /// <summary>
         /// Gets the offset of the returned page.
         /// </summary>
-        public int Offset { get; private set; }
+        public int Offset { get; }
 
         /// <summary>
         /// Gets the limit of the returned page.
         /// </summary>
-        public int Limit { get; private set; }
+        public int Limit { get; }
 
         /// <summary>
         /// Gets the total amount of items.
         /// </summary>
-        public int Total { get; private set; }
+        public int Total { get; }
 
         #endregion
 

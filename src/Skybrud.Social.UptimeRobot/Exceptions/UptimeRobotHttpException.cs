@@ -15,12 +15,12 @@ namespace Skybrud.Social.UptimeRobot.Exceptions {
         /// <summary>
         /// Gets a reference to the underlying <see cref="SocialHttpResponse"/>.
         /// </summary>
-        public SocialHttpResponse Response { get; private set; }
+        public SocialHttpResponse Response { get; }
 
         /// <summary>
         /// Gets a reference to the error returned by the API.
         /// </summary>
-        public UptimeRobotError Error { get; private set; }
+        public UptimeRobotError Error { get; }
 
         #endregion
 

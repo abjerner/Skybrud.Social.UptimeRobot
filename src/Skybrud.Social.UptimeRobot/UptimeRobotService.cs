@@ -13,17 +13,17 @@ namespace Skybrud.Social.UptimeRobot {
         /// <summary>
         /// Gets a referencer to the underlying client.
         /// </summary>
-        public UptimeRobotClient Client { get; private set; }
+        public UptimeRobotClient Client { get; }
 
         /// <summary>
         /// Gets a reference to the accounts endpoint.
         /// </summary>
-        public UptimeRobotAccountsEndpoint Accounts { get; private set; }
+        public UptimeRobotAccountsEndpoint Accounts { get; }
 
         /// <summary>
         /// Gets a reference to the monitors endpoint.
         /// </summary>
-        public UptimeRobotMonitorsEndpoint Monitors { get; private set; }
+        public UptimeRobotMonitorsEndpoint Monitors { get; }
 
         #endregion
 
@@ -38,22 +38,22 @@ namespace Skybrud.Social.UptimeRobot {
         #endregion
 
         #region Static methods
-        
+
         /// <summary>
-        /// Initializes a new service based on the specified client.
+        /// Initializes a new service based on the specified <paramref name="apiKey"/>.
         /// </summary>
         /// <param name="apiKey">The API key of an Uptime Robot user.</param>
         public static UptimeRobotService CreateFromApiKey(string apiKey) {
-            if (String.IsNullOrWhiteSpace(apiKey)) throw new ArgumentNullException("apiKey");
+            if (String.IsNullOrWhiteSpace(apiKey)) throw new ArgumentNullException(nameof(apiKey));
             return new UptimeRobotService(new UptimeRobotClient(apiKey));
         }
 
         /// <summary>
-        /// Initializes a new service based on the specified client.
+        /// Initializes a new service based on the specified <paramref name="client"/>.
         /// </summary>
         /// <param name="client">The client to use.</param>
         public static UptimeRobotService CreateFromOAuthClient(UptimeRobotClient client) {
-            if (client == null) throw new ArgumentNullException("client");
+            if (client == null) throw new ArgumentNullException(nameof(client));
             return new UptimeRobotService(client);
         }
 

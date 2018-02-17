@@ -1,4 +1,5 @@
-﻿using Skybrud.Social.Http;
+﻿using System;
+using Skybrud.Social.Http;
 using Skybrud.Social.UptimeRobot.Options;
 
 namespace Skybrud.Social.UptimeRobot.Endpoints.Raw {
@@ -13,7 +14,7 @@ namespace Skybrud.Social.UptimeRobot.Endpoints.Raw {
         /// <summary>
         /// Gets a reference to the Uptime Robot client.
         /// </summary>
-        public UptimeRobotClient Client { get; private set; }
+        public UptimeRobotClient Client { get; }
 
         #endregion
 
@@ -41,6 +42,7 @@ namespace Skybrud.Social.UptimeRobot.Endpoints.Raw {
         /// <param name="options">The options for the call to the API.</param>
         /// <returns>An instance of <see cref="SocialHttpResponse"/> representing the raw response.</returns>
         public SocialHttpResponse GetMonitors(UptimeRobotGetMonitorsOptions options) {
+            if (options == null) throw new ArgumentNullException(nameof(options));
             return Client.DoHttpPostRequest("https://api.uptimerobot.com/v2/getMonitors", options);
         }
 

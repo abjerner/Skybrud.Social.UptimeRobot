@@ -13,7 +13,7 @@ namespace Skybrud.Social.UptimeRobot.Objects.Errors {
         /// <summary>
         /// Gets the type of the error.
         /// </summary>
-        public string Type { get; private set; }
+        public string Type { get; }
 
         #endregion
 

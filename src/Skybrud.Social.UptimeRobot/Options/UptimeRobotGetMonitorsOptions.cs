@@ -32,36 +32,35 @@ namespace Skybrud.Social.UptimeRobot.Options {
         public UptimeRobotMonitorStatus[] Statuses { get; set; }
 
         /// <summary>
-        /// Gets or sets an array of custom uptime ratios specified in days - eg. <code>7</code>, <code>30</code> or
-        /// <code>45</code>.
+        /// Gets or sets an array of custom uptime ratios specified in days - eg. <c>7</c>, <c>30</c> or <c>45</c>.
         /// </summary>
         public int[] CustomUptimeRatios { get; set; }
 
         /// <summary>
         /// Gets or sets whether the <strong>all time uptime ratio</strong> should be returned. It will slow down the
-        /// response a bit and, if not really necessary, it is suggested not to use it. Default is <code>false</code>.
+        /// response a bit and, if not really necessary, it is suggested not to use it. Default is <c>false</c>.
         /// </summary>
         public bool AllTimeUptimeRatio { get; set; }
 
         /// <summary>
         /// Gets or sets whether the <strong>all time durations of up-down-paused events</strong> should be returned.
         /// It will slow down the response a bit and, if not really necessary, it is suggested not to use it. Default
-        /// is <code>false</code>.
+        /// is <c>false</c>.
         /// </summary>
         public bool AllTimeUptimeDurations { get; set; }
         
         /// <summary>
-        /// Gets or sets whether the log of each monitor should be returned. Default value is <code>false</code>.
+        /// Gets or sets whether the log of each monitor should be returned. Default value is <c>false</c>.
         /// </summary>
         public bool Logs { get; set; }
 
         /// <summary>
-        /// Gets or sets the offset of the page to be returned. Default value is <code>0</code>.
+        /// Gets or sets the offset of the page to be returned. Default value is <c>0</c>.
         /// </summary>
         public int Offset { get; set; }
 
         /// <summary>
-        /// Gets or sets the maximum amount of monitors to be returned by the API. Default and maximum value is <code>50</code>.
+        /// Gets or sets the maximum amount of monitors to be returned by the API. Default and maximum value is <c>50</c>.
         /// </summary>
         public int Limit { get; set; }
 

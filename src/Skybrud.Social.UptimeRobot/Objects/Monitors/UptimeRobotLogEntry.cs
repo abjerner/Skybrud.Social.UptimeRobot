@@ -16,21 +16,21 @@ namespace Skybrud.Social.UptimeRobot.Objects.Monitors {
         /// <summary>
         /// Gets the type of the log entry.
         /// </summary>
-        public UptimeRobotLogType Type { get; private set; }
+        public UptimeRobotLogType Type  { get; }
 
         /// <summary>
         /// Gets the timestamp of the log entry.
         /// </summary>
-        public DateTime DateTime { get; private set; }
+        public DateTime DateTime  { get; }
 
         #endregion
 
         #region Constructors
 
         /// <summary>
-        /// Initializes a new instance from the specified <code>obj</code>.
+        /// Initializes a new instance from the specified <paramref name="obj"/>.
         /// </summary>
-        /// <param name="obj">The instance of <code>JObject</code> representing the log entry.</param>
+        /// <param name="obj">The instance of <see cref="JObject"/> representing the log entry.</param>
         protected UptimeRobotLogEntry(JObject obj) : base(obj) {
             Type = obj.GetEnum<UptimeRobotLogType>("type");
             DateTime = obj.GetString("datetime", ParseDate);
@@ -53,10 +53,10 @@ namespace Skybrud.Social.UptimeRobot.Objects.Monitors {
         #region Static methods
 
         /// <summary>
-        /// Parses the specified <code>obj</code> into an instance of <code>UptimeRobotLogEntry</code>.
+        /// Parses the specified <paramref name="obj"/> into an instance of <see cref="UptimeRobotLogEntry"/>.
         /// </summary>
-        /// <param name="obj">The instance of <code>JObject</code> to be parsed.</param>
-        /// <returns>Returns an instance of <code>UptimeRobotLogEntry</code>.</returns>
+        /// <param name="obj">The instance of <see cref="JObject"/> to be parsed.</param>
+        /// <returns>An instance of <see cref="UptimeRobotLogEntry"/>.</returns>
         public static UptimeRobotLogEntry Parse(JObject obj) {
             return obj == null ? null : new UptimeRobotLogEntry(obj);
         }

@@ -13,32 +13,32 @@ namespace Skybrud.Social.UptimeRobot.Objects.Accounts {
         /// <summary>
         /// Gets the email address of the authenticated account.
         /// </summary>
-        public string Email { get; private set; }
+        public string Email { get; }
 
         /// <summary>
         /// Gets the maximum amount of monitors allowed within the current plan.
         /// </summary>
-        public int MonitorLimit { get; private set; }
+        public int MonitorLimit { get; }
 
         /// <summary>
         /// Gets the lowest possible interval allowed within the current plan.
         /// </summary>
-        public int MonitorInterval { get; private set; }
+        public int MonitorInterval { get; }
 
         /// <summary>
         /// Gets the amount of monitors that are currently up.
         /// </summary>
-        public int UpMonitors { get; private set; }
+        public int UpMonitors { get; }
 
         /// <summary>
         /// Gets the amount of monitors that are currently down.
         /// </summary>
-        public int DownMonitors { get; private set; }
+        public int DownMonitors { get; }
 
         /// <summary>
         /// Gets the amount of monitors that are currently paused.
         /// </summary>
-        public int PausedMonitors { get; private set; }
+        public int PausedMonitors { get; }
 
         #endregion
 
@@ -65,7 +65,7 @@ namespace Skybrud.Social.UptimeRobot.Objects.Accounts {
         /// Parses the specified <see cref="JObject"/> into an instance of <see cref="UptimeRobotAccountDetails"/>.
         /// </summary>
         /// <param name="obj">The instance of <see cref="JObject"/> to be parsed.</param>
-        /// <returns>Returns an instance of <see cref="UptimeRobotAccountDetails"/>.</returns>
+        /// <returns>An instance of <see cref="UptimeRobotAccountDetails"/>.</returns>
         public static UptimeRobotAccountDetails Parse(JObject obj) {
             return obj == null ? null : new UptimeRobotAccountDetails(obj);
         }

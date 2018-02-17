@@ -32,7 +32,7 @@ namespace Skybrud.Social.UptimeRobot.Responses.Monitors {
         /// <param name="response">The response to be parsed.</param>
         /// <returns>An instance of <see cref="UptimeRobotGetMonitorsResponse"/>.</returns>
         public static UptimeRobotGetMonitorsResponse ParseResponse(SocialHttpResponse response) {
-            if (response == null) throw new ArgumentNullException("response");
+            if (response == null) throw new ArgumentNullException(nameof(response));
             return new UptimeRobotGetMonitorsResponse(response);
         }
 

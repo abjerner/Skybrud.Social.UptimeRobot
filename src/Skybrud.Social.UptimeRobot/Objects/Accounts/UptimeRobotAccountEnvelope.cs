@@ -13,7 +13,7 @@ namespace Skybrud.Social.UptimeRobot.Objects.Accounts {
         /// <summary>
         /// Gets a reference to the account details of the current user.
         /// </summary>
-        public UptimeRobotAccountDetails Account { get; private set; }
+        public UptimeRobotAccountDetails Account { get; }
 
         #endregion
 

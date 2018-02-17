@@ -19,12 +19,12 @@ namespace Skybrud.Social.UptimeRobot {
         /// <summary>
         /// Gets a reference to the raw accounts endpoint.
         /// </summary>
-        public UptimeRobotAccountsRawEndpoint Accounts { get; private set; }
+        public UptimeRobotAccountsRawEndpoint Accounts { get; }
 
         /// <summary>
         /// Gets a reference to the raw monitors endpoint.
         /// </summary>
-        public UptimeRobotMonitorsRawEndpoint Monitors { get; private set; }
+        public UptimeRobotMonitorsRawEndpoint Monitors { get; }
 
         #endregion
 
@@ -39,7 +39,7 @@ namespace Skybrud.Social.UptimeRobot {
         }
 
         /// <summary>
-        /// Initializes a new client with the specified <code>apiKey</code>.
+        /// Initializes a new client with the specified <paramref name="apiKey"/>.
         /// </summary>
         /// <param name="apiKey">The API key of your user.</param>
         public UptimeRobotClient(string apiKey) : this() {

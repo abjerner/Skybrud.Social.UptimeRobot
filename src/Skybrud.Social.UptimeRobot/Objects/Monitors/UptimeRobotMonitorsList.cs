@@ -14,12 +14,12 @@ namespace Skybrud.Social.UptimeRobot.Objects.Monitors {
         /// <summary>
         /// Gets pagination information about the list.
         /// </summary>
-        public UptimeRobotPagination Pagination { get; private set; }
+        public UptimeRobotPagination Pagination { get; }
 
         /// <summary>
         /// Gets an array of monitors of the returned page.
         /// </summary>
-        public UptimeRobotMonitor[] Monitors { get; private set; }
+        public UptimeRobotMonitor[] Monitors { get; }
 
         #endregion
 

@@ -5,7 +5,7 @@ using Skybrud.Social.UptimeRobot.Responses.Monitors;
 namespace Skybrud.Social.UptimeRobot.Endpoints {
 
     /// <summary>
-    /// Class representing the implementation of the monitors endpoint.
+    /// Class representing the implementation of the <strong>Monitors</strong> endpoint.
     /// </summary>
     public class UptimeRobotMonitorsEndpoint {
 
@@ -14,14 +14,12 @@ namespace Skybrud.Social.UptimeRobot.Endpoints {
         /// <summary>
         /// Gets a reference to the Uptime Robot service.
         /// </summary>
-        public UptimeRobotService Service { get; private set; }
+        public UptimeRobotService Service { get; }
 
         /// <summary>
         /// Gets a reference to the raw endpoint.
         /// </summary>
-        public UptimeRobotMonitorsRawEndpoint Raw {
-            get { return Service.Client.Monitors; }
-        }
+        public UptimeRobotMonitorsRawEndpoint Raw => Service.Client.Monitors;
 
         #endregion
 

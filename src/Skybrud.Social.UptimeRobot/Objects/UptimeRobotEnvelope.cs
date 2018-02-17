@@ -14,7 +14,7 @@ namespace Skybrud.Social.UptimeRobot.Objects {
         /// <summary>
         /// Gets the status of the response.
         /// </summary>
-        public UptimeRobotStatus Status { get; private set; }
+        public UptimeRobotStatus Status { get; }
 
         #endregion
 

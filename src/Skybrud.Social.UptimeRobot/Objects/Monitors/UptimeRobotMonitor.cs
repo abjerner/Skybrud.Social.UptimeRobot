@@ -16,54 +16,54 @@ namespace Skybrud.Social.UptimeRobot.Objects.Monitors {
         /// <summary>
         /// Gets the ID of the monitor.
         /// </summary>
-        public int Id { get; private set; }
+        public int Id  { get; }
 
         /// <summary>
         /// Gets the friendly name of the monitor.
         /// </summary>
-        public string FriendlyName { get; private set; }
+        public string FriendlyName  { get; }
 
         /// <summary>
         /// Gets the URL of the monitor. Depending on the monitor type, this property will instead return the IP
         /// address or hostname the monitor will check.
         /// </summary>
-        public string Url { get; private set; }
+        public string Url  { get; }
 
         /// <summary>
         /// Gets the type of the monitor.
         /// </summary>
-        public UptimeRobotMonitorType Type { get; private set; }
+        public UptimeRobotMonitorType Type  { get; }
 
         /// <summary>
         /// Gets the sub type of the monitor.
         /// </summary>
-        public UptimeRobotMonitorSubType SubType { get; private set; }
+        public UptimeRobotMonitorSubType SubType  { get; }
 
         /// <summary>
         /// Gets the interval of the monitor.
         /// </summary>
-        public TimeSpan Interval { get; private set; }
+        public TimeSpan Interval  { get; }
 
         /// <summary>
         /// Gets the current status of the monitor.
         /// </summary>
-        public UptimeRobotMonitorStatus Status { get; private set; }
+        public UptimeRobotMonitorStatus Status  { get; }
 
         /// <summary>
         /// Gets a timestamp for when the monitor was created.
         /// </summary>
-        public EssentialsDateTime Created { get; private set; }
+        public EssentialsDateTime Created  { get; }
 
         /// <summary>
         /// Gets the alltime uptime ratio of the monitor.
         /// </summary>
-        public float AlltimeUptimeRatio { get; private set; }
+        public float AlltimeUptimeRatio  { get; }
 
         /// <summary>
-        /// Gets an array with the log entries of the monitor, or <code>null</code> depending on the options of the
+        /// Gets an array with the log entries of the monitor, or <c>null</c> depending on the options of the
         /// request to the API.
         /// </summary>
-        public UptimeRobotLogEntry[] Log { get; private set; } 
+        public UptimeRobotLogEntry[] Log  { get; } 
 
         // responsetime[]
 
