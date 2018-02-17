@@ -1,65 +1,41 @@
-module.exports = function(grunt) {
+module.exports = function (grunt) {
 
-	var path = require('path');
+    var path = require('path');
 
 	// Load the package JSON file
 	var pkg = grunt.file.readJSON('package.json');
 
-	// get the root path of the project
-	var projectRoot = 'src/' + pkg.name + '/';
-
 	// Load information about the assembly
-	var assembly = grunt.file.readJSON(projectRoot + 'Properties/AssemblyInfo.json');
+	var assembly = grunt.file.readJSON('src/' + pkg.name + '/Properties/AssemblyInfo.json');
 
 	// Get the version of the package
-	var version = assembly.informationalVersion ? assembly.informationalVersion : assembly.version;
+    var version = assembly.informationalVersion ? assembly.informationalVersion : assembly.version;
 
 	grunt.initConfig({
-		pkg: pkg,
-		clean: {
-			files: [
-				'files/**/*.*'
-			]
-		},
-		copy: {
-			release: {
-				files: [
-					{
-						expand: true,
-						cwd: projectRoot + 'bin/Release/',
-						src: [
-							pkg.name + '.dll',
-							pkg.name + '.xml'
-						],
-						dest: 'files/bin/'
-					}
-				]
-			}
-		},
+	    pkg: pkg,
 		zip: {
-			release: {
-				cwd: 'files/',
-				src: [
-					'files/**/*.*'
+		    release: {
+		        router: function (filepath) {
+					if (filepath.indexOf('/bin/Release/') >= 0) {
+						return filepath.split('/bin/Release/')[1];
+					} else {
+						return path.basename(filepath);
+					}
+		        },
+			    src: [
+					'src/' + pkg.name + '/bin/Release/*/*.dll',
+					'src/' + pkg.name + '/bin/Release/*/*.xml',
+					'src/LICENSE.html'
 				],
-				dest: 'releases/github/' + pkg.name + '.v' + version + '.zip'
-			}
-		},
-		nugetpack: {
-			release: {
-				src: 'src/' + pkg.name + '/' + pkg.name + '.csproj',
-				dest: 'releases/nuget/'
+		        dest: 'releases/github/' + pkg.name + '.v' + version + '.zip'
 			}
 		}
 	});
 
-	grunt.loadNpmTasks('grunt-contrib-clean');
-	grunt.loadNpmTasks('grunt-contrib-copy');
-	grunt.loadNpmTasks('grunt-nuget');
 	grunt.loadNpmTasks('grunt-zip');
 
-	grunt.registerTask('dev', ['clean', 'copy', 'zip', 'nugetpack']);
+	grunt.registerTask('release', ['zip']);
 
-	grunt.registerTask('default', ['dev']);
+	grunt.registerTask('default', ['release']);
 
 };
