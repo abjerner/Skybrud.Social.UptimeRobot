@@ -75,6 +75,9 @@ namespace Skybrud.Social.UptimeRobot.Options {
             return new SocialHttpQueryString();
         }
 
+        /// <summary>
+        /// Gets an instance of <see cref="IHttpPostData"/> representing the POST parameters.
+        /// </summary>
         public IHttpPostData GetPostData() {
 
             SocialHttpPostData data = new SocialHttpPostData();

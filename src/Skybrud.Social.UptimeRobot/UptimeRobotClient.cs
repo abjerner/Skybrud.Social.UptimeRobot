@@ -49,7 +49,12 @@ namespace Skybrud.Social.UptimeRobot {
         #endregion
 
         #region Member methods
-        
+
+        /// <summary>
+        /// Updates new HTTP requests with information specific to the Uptime Robot. If an <see cref="ApiKey"/> is
+        /// specified, the value is appended to the HTTP post data to authenticate your requests.
+        /// </summary>
+        /// <param name="request">The request.</param>
         protected override void PrepareHttpRequest(SocialHttpRequest request) {
 
             if (request.PostData == null) request.PostData = new SocialHttpPostData();
