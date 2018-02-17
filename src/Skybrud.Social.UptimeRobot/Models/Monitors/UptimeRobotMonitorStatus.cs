@@ -1,4 +1,4 @@
-﻿namespace Skybrud.Social.UptimeRobot.Enums {
+﻿namespace Skybrud.Social.UptimeRobot.Models.Monitors {
     
     /// <summary>
     /// Class representing the status of a monitor.

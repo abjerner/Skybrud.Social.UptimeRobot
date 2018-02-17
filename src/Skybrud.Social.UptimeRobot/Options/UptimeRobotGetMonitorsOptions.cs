@@ -3,6 +3,7 @@ using System.Linq;
 using Skybrud.Social.Http;
 using Skybrud.Social.Interfaces.Http;
 using Skybrud.Social.UptimeRobot.Enums;
+using Skybrud.Social.UptimeRobot.Models.Monitors;
 
 namespace Skybrud.Social.UptimeRobot.Options {
     
