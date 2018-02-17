@@ -1,7 +1,7 @@
 ﻿using Newtonsoft.Json.Linq;
 using Skybrud.Essentials.Json.Extensions;
 
-namespace Skybrud.Social.UptimeRobot.Objects.Errors {
+namespace Skybrud.Social.UptimeRobot.Models.Errors {
     
     /// <summary>
     /// Class representing an error received from the Uptime Robot API.

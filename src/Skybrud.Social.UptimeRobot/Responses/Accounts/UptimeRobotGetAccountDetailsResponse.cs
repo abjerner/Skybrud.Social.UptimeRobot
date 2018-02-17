@@ -1,7 +1,7 @@
 ﻿using System;
 using Newtonsoft.Json.Linq;
 using Skybrud.Social.Http;
-using Skybrud.Social.UptimeRobot.Objects.Accounts;
+using Skybrud.Social.UptimeRobot.Models.Accounts;
 
 namespace Skybrud.Social.UptimeRobot.Responses.Accounts {
 

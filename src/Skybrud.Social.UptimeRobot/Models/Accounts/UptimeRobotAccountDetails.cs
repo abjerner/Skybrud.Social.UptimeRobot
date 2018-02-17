@@ -1,7 +1,7 @@
 ﻿using Newtonsoft.Json.Linq;
 using Skybrud.Essentials.Json.Extensions;
 
-namespace Skybrud.Social.UptimeRobot.Objects.Accounts {
+namespace Skybrud.Social.UptimeRobot.Models.Accounts {
     
     /// <summary>
     /// Class representing the account details of a Uptime Robot user.

@@ -1,7 +1,6 @@
 ﻿using System;
-using System.Net;
 using Skybrud.Social.Http;
-using Skybrud.Social.UptimeRobot.Objects.Errors;
+using Skybrud.Social.UptimeRobot.Models.Errors;
 
 namespace Skybrud.Social.UptimeRobot.Exceptions {
     

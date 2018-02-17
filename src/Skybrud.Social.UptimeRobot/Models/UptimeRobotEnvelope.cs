@@ -2,7 +2,7 @@
 using Skybrud.Essentials.Json.Extensions;
 using Skybrud.Social.UptimeRobot.Enums;
 
-namespace Skybrud.Social.UptimeRobot.Objects {
+namespace Skybrud.Social.UptimeRobot.Models {
 
     /// <summary>
     /// Class representing a basic response from the Uptime Robot API.

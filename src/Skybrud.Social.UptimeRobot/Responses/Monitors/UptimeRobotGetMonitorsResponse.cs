@@ -1,7 +1,7 @@
 ﻿using System;
 using Newtonsoft.Json.Linq;
 using Skybrud.Social.Http;
-using Skybrud.Social.UptimeRobot.Objects.Monitors;
+using Skybrud.Social.UptimeRobot.Models.Monitors;
 
 namespace Skybrud.Social.UptimeRobot.Responses.Monitors {
 

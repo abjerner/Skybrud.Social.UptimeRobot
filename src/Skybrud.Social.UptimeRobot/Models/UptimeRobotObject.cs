@@ -1,7 +1,7 @@
 ﻿using Newtonsoft.Json.Linq;
 using Skybrud.Essentials.Json;
 
-namespace Skybrud.Social.UptimeRobot.Objects {
+namespace Skybrud.Social.UptimeRobot.Models {
     
     /// <summary>
     /// Class representing a basic object from the Uptime Robot API derived from an instance of <see cref="JObject"/>.

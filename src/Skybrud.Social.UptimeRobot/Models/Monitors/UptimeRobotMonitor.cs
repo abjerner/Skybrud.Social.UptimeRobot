@@ -4,7 +4,7 @@ using Skybrud.Essentials.Json.Extensions;
 using Skybrud.Essentials.Time;
 using Skybrud.Social.UptimeRobot.Enums;
 
-namespace Skybrud.Social.UptimeRobot.Objects.Monitors {
+namespace Skybrud.Social.UptimeRobot.Models.Monitors {
     
     /// <summary>
     /// Class representing an Uptime Robot monitor.
