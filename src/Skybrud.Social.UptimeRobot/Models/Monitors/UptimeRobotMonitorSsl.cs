@@ -77,10 +77,10 @@ namespace Skybrud.Social.UptimeRobot.Models.Monitors
         #region Static methods
 
         /// <summary>
-        /// Parses the specified <paramref name="obj"/> into an instance of <see cref="UptimeRobotLogEntry"/>.
+        /// Parses the specified <paramref name="obj"/> into an instance of <see cref="UptimeRobotMonitorSsl"/>.
         /// </summary>
         /// <param name="obj">The instance of <see cref="JObject"/> to be parsed.</param>
-        /// <returns>An instance of <see cref="UptimeRobotLogEntry"/>.</returns>
+        /// <returns>An instance of <see cref="UptimeRobotMonitorSsl"/>.</returns>
         public static UptimeRobotMonitorSsl Parse(JObject obj)
         {
             return obj == null ? null : new UptimeRobotMonitorSsl(obj);
