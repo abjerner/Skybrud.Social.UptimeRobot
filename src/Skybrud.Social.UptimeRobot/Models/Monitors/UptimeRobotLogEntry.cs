@@ -32,18 +32,18 @@ namespace Skybrud.Social.UptimeRobot.Models.Monitors {
         /// <param name="obj">The instance of <see cref="JObject"/> representing the log entry.</param>
         protected UptimeRobotLogEntry(JObject obj) : base(obj) {
             Type = obj.GetEnum<UptimeRobotLogType>("type");
-            DateTime = obj.GetString("datetime", ParseDate);
+            DateTime = obj.GetInt64("datetime", ParseDate);
         }
 
         #endregion
 
         #region Member methods
 
-        private DateTime ParseDate(string str) {
+        private DateTime ParseDate(long src) {
             try {
-                return DateTime.ParseExact(str, "MM/dd/yyyy HH:mm:ss", CultureInfo.InvariantCulture);
+                return Essentials.Time.EssentialsDateTime.FromUnixTimestamp(src).DateTime;
             } catch (Exception) {
-                throw new Exception("Unable to parse date " + str);
+                throw new Exception("Unable to parse date " + src);
             }
         }
 
