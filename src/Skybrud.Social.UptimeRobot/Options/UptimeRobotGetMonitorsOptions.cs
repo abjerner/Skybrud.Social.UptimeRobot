@@ -55,6 +55,11 @@ namespace Skybrud.Social.UptimeRobot.Options {
         public bool Logs { get; set; }
 
         /// <summary>
+        /// <summary>
+        /// Defines if SSL certificate info for each monitor will be returned. Default value is <c>false</c>.
+        /// </summary>
+        public bool Ssl { get; set; } = false;
+
         /// Gets or sets the offset of the page to be returned. Default value is <c>0</c>.
         /// </summary>
         public int Offset { get; set; }
@@ -89,6 +94,7 @@ namespace Skybrud.Social.UptimeRobot.Options {
             if (AllTimeUptimeRatio) data.Add("all_time_uptime_ratio", "1");
             if (AllTimeUptimeDurations) data.Add("all_time_uptime_durations", "1");
             if (Logs) data.Add("logs", "1");
+            if (Ssl) data.Add("ssl", "1");
             if (Offset > 0) data.Add("offset", Offset);
             if (Limit > 0) data.Add("limit", Limit);
 

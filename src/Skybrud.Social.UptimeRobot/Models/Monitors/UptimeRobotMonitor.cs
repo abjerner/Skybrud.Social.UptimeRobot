@@ -62,7 +62,13 @@ namespace Skybrud.Social.UptimeRobot.Models.Monitors {
         /// Gets an array with the log entries of the monitor, or <c>null</c> depending on the options of the
         /// request to the API.
         /// </summary>
-        public UptimeRobotLogEntry[] Logs  { get; } 
+        public UptimeRobotLogEntry[] Logs  { get; }
+
+        /// <summary>
+        /// Gets details of about the sites SSL certificate for the monitor, or <c>null</c> depending on the options of the
+        /// request to the API.
+        /// </summary>
+        public UptimeRobotMonitorSsl Ssl { get; }
 
         // responsetime[]
 
@@ -85,6 +91,7 @@ namespace Skybrud.Social.UptimeRobot.Models.Monitors {
             Created = obj.GetInt32("create_datetime", EssentialsDateTime.FromUnixTimestamp);
             AlltimeUptimeRatio = obj.GetFloat("all_time_uptime_ratio");
             Logs = obj.GetArray("logs", UptimeRobotLogEntry.Parse);
+            Ssl = obj.GetObject("ssl", UptimeRobotMonitorSsl.Parse);
         }
 
         #endregion
