@@ -14,6 +14,7 @@
         /// Indicates that a keyword doesn't exist on a given page.
         /// </summary>
         NotExists = 2
+
     }
 
 }

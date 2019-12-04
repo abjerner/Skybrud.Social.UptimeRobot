@@ -1,6 +1,6 @@
 ﻿using System;
 using Newtonsoft.Json.Linq;
-using Skybrud.Social.Http;
+using Skybrud.Essentials.Http;
 using Skybrud.Social.UptimeRobot.Models.Accounts;
 
 namespace Skybrud.Social.UptimeRobot.Responses.Accounts {
@@ -12,7 +12,7 @@ namespace Skybrud.Social.UptimeRobot.Responses.Accounts {
 
         #region Constructors
 
-        private UptimeRobotGetAccountDetailsResponse(SocialHttpResponse response) : base(response) {
+        private UptimeRobotGetAccountDetailsResponse(IHttpResponse response) : base(response) {
 
             // Validate the response
             JObject body = ValidateResponse(response);
@@ -31,7 +31,7 @@ namespace Skybrud.Social.UptimeRobot.Responses.Accounts {
         /// </summary>
         /// <param name="response">The response to be parsed.</param>
         /// <returns>An instance of <see cref="UptimeRobotGetAccountDetailsResponse"/>.</returns>
-        public static UptimeRobotGetAccountDetailsResponse ParseResponse(SocialHttpResponse response) {
+        public static UptimeRobotGetAccountDetailsResponse ParseResponse(IHttpResponse response) {
             if (response == null) throw new ArgumentNullException(nameof(response));
             return new UptimeRobotGetAccountDetailsResponse(response);
         }

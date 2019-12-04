@@ -1,6 +1,6 @@
 ﻿using Newtonsoft.Json.Linq;
+using Skybrud.Essentials.Http;
 using Skybrud.Essentials.Json.Extensions;
-using Skybrud.Social.Http;
 using Skybrud.Social.UptimeRobot.Exceptions;
 using Skybrud.Social.UptimeRobot.Models.Errors;
 
@@ -9,7 +9,7 @@ namespace Skybrud.Social.UptimeRobot.Responses {
     /// <summary>
     /// Class representing a response from the Uptime Robot API.
     /// </summary>
-    public class UptimeRobotResponse : SocialResponse {
+    public class UptimeRobotResponse : HttpResponseBase {
 
         #region Constructors
 
@@ -17,7 +17,7 @@ namespace Skybrud.Social.UptimeRobot.Responses {
         /// Initializes a new instance of from the specified <paramref name="response"/>.
         /// </summary>
         /// <param name="response">The response to be parsed.</param>
-        protected UptimeRobotResponse(SocialHttpResponse response) : base(response) { }
+        protected UptimeRobotResponse(IHttpResponse response) : base(response) { }
 
         #endregion
 
@@ -27,7 +27,7 @@ namespace Skybrud.Social.UptimeRobot.Responses {
         /// Validates the specified <paramref name="response"/>.
         /// </summary>
         /// <param name="response">The response to be validated.</param>
-        public static JObject ValidateResponse(SocialHttpResponse response) {
+        public static JObject ValidateResponse(IHttpResponse response) {
 
             // Valid responses should be of the type "application/json"
             if (!response.ContentType.StartsWith("application/json")) throw new UptimeRobotHttpException(response);
@@ -70,7 +70,7 @@ namespace Skybrud.Social.UptimeRobot.Responses {
         /// Initializes a new instance of from the specified <paramref name="response"/>.
         /// </summary>
         /// <param name="response">The response to be parsed.</param>
-        protected UptimeRobotResponse(SocialHttpResponse response) : base(response) { }
+        protected UptimeRobotResponse(IHttpResponse response) : base(response) { }
 
         #endregion
 

@@ -1,16 +1,13 @@
-﻿using System;
-using System.Globalization;
-using Newtonsoft.Json.Linq;
+﻿using Newtonsoft.Json.Linq;
 using Skybrud.Essentials.Json.Extensions;
+using Skybrud.Essentials.Time;
 
-namespace Skybrud.Social.UptimeRobot.Models.Monitors
-{
+namespace Skybrud.Social.UptimeRobot.Models.Monitors {
 
     /// <summary>
     /// Class representing a log entry of a monitor.
     /// </summary>
-    public class UptimeRobotMonitorSsl : UptimeRobotObject
-    {
+    public class UptimeRobotMonitorSsl : UptimeRobotObject {
 
         #region Properties
 
@@ -37,7 +34,7 @@ namespace Skybrud.Social.UptimeRobot.Models.Monitors
         /// <summary>
         /// Gets the expiration date of the SSL certificate. 
         /// </summary>
-        public DateTime Expires { get; }
+        public EssentialsTime Expires { get; }
 
         #endregion
 
@@ -47,29 +44,12 @@ namespace Skybrud.Social.UptimeRobot.Models.Monitors
         /// Initializes a new instance from the specified <paramref name="obj"/>.
         /// </summary>
         /// <param name="obj">The instance of <see cref="JObject"/> representing the log entry.</param>
-        protected UptimeRobotMonitorSsl(JObject obj) : base(obj)
-        {
+        protected UptimeRobotMonitorSsl(JObject obj) : base(obj) {
             Brand = obj.GetString("brand");
             Product = obj.GetString("product");
             Expires = obj.GetInt64("expires", ParseDate);
             IgnoreErrors = obj.GetBoolean("ignore_errors");
             DisableNotifications = obj.GetBoolean("disable_notifications");
-        }
-
-        #endregion
-
-        #region Member methods
-
-        private DateTime ParseDate(long src)
-        {
-            try
-            {
-                return Essentials.Time.EssentialsDateTime.FromUnixTimestamp(src).DateTime;
-            }
-            catch (Exception)
-            {
-                throw new Exception("Unable to parse date " + src);
-            }
         }
 
         #endregion
@@ -81,8 +61,7 @@ namespace Skybrud.Social.UptimeRobot.Models.Monitors
         /// </summary>
         /// <param name="obj">The instance of <see cref="JObject"/> to be parsed.</param>
         /// <returns>An instance of <see cref="UptimeRobotMonitorSsl"/>.</returns>
-        public static UptimeRobotMonitorSsl Parse(JObject obj)
-        {
+        public static UptimeRobotMonitorSsl Parse(JObject obj) {
             return obj == null ? null : new UptimeRobotMonitorSsl(obj);
         }
 

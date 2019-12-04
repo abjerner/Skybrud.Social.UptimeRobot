@@ -1,4 +1,4 @@
-﻿using Skybrud.Social.Http;
+﻿using Skybrud.Essentials.Http;
 
 namespace Skybrud.Social.UptimeRobot.Endpoints.Raw {
 
@@ -12,7 +12,7 @@ namespace Skybrud.Social.UptimeRobot.Endpoints.Raw {
         /// <summary>
         /// Gets a reference to the Uptime Robot client.
         /// </summary>
-        public UptimeRobotClient Client { get; private set; }
+        public UptimeRobotClient Client { get; }
 
         #endregion
 
@@ -29,9 +29,9 @@ namespace Skybrud.Social.UptimeRobot.Endpoints.Raw {
         /// <summary>
         /// Gets the details of the account behind the current <see cref="UptimeRobotClient.ApiKey"/>.
         /// </summary>
-        /// <returns>An instance of <see cref="SocialHttpResponse"/> representing the response.</returns>
-        public SocialHttpResponse GetAccountDetails() {
-            return Client.DoHttpPostRequest("https://api.uptimerobot.com/v2/getAccountDetails");
+        /// <returns>An instance of <see cref="IHttpResponse"/> representing the response.</returns>
+        public IHttpResponse GetAccountDetails() {
+            return Client.Post("https://api.uptimerobot.com/v2/getAccountDetails");
         }
 
         #endregion

@@ -1,7 +1,7 @@
 ﻿using Newtonsoft.Json.Linq;
 using Skybrud.Essentials.Json.Extensions;
 
-namespace Skybrud.Social.UptimeRobot.Models.Common {
+namespace Skybrud.Social.UptimeRobot.Models {
 
     /// <summary>
     /// Class representing the response body of a call to get a list of monitors of a Uptime Robot user.

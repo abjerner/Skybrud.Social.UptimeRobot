@@ -2,6 +2,7 @@
 using System.Globalization;
 using Newtonsoft.Json.Linq;
 using Skybrud.Essentials.Json.Extensions;
+using Skybrud.Essentials.Time;
 
 namespace Skybrud.Social.UptimeRobot.Models.Monitors {
 
@@ -20,7 +21,7 @@ namespace Skybrud.Social.UptimeRobot.Models.Monitors {
         /// <summary>
         /// Gets the timestamp of the log entry.
         /// </summary>
-        public DateTime DateTime  { get; }
+        public EssentialsTime DateTime  { get; }
 
         #endregion
 
@@ -33,18 +34,6 @@ namespace Skybrud.Social.UptimeRobot.Models.Monitors {
         protected UptimeRobotLogEntry(JObject obj) : base(obj) {
             Type = obj.GetEnum<UptimeRobotLogType>("type");
             DateTime = obj.GetInt64("datetime", ParseDate);
-        }
-
-        #endregion
-
-        #region Member methods
-
-        private DateTime ParseDate(long src) {
-            try {
-                return Essentials.Time.EssentialsDateTime.FromUnixTimestamp(src).DateTime;
-            } catch (Exception) {
-                throw new Exception("Unable to parse date " + src);
-            }
         }
 
         #endregion

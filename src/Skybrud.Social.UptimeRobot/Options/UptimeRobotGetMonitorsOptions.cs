@@ -1,7 +1,7 @@
-﻿using System;
-using System.Linq;
-using Skybrud.Social.Http;
-using Skybrud.Social.Interfaces.Http;
+﻿using System.Linq;
+using Skybrud.Essentials.Http;
+using Skybrud.Essentials.Http.Collections;
+using Skybrud.Essentials.Http.Options;
 using Skybrud.Social.UptimeRobot.Models.Monitors;
 
 namespace Skybrud.Social.UptimeRobot.Options {
@@ -9,7 +9,7 @@ namespace Skybrud.Social.UptimeRobot.Options {
     /// <summary>
     /// Class representing the options for a call to get the monitors of the current user.
     /// </summary>
-    public class UptimeRobotGetMonitorsOptions : IHttpPostOptions {
+    public class UptimeRobotGetMonitorsOptions : IHttpRequestOptions {
 
         #region Properties
 
@@ -55,11 +55,11 @@ namespace Skybrud.Social.UptimeRobot.Options {
         public bool Logs { get; set; }
 
         /// <summary>
-        /// <summary>
         /// Defines if SSL certificate info for each monitor will be returned. Default value is <c>false</c>.
         /// </summary>
-        public bool Ssl { get; set; } = false;
+        public bool Ssl { get; set; }
 
+        /// <summary>
         /// Gets or sets the offset of the page to be returned. Default value is <c>0</c>.
         /// </summary>
         public int Offset { get; set; }
@@ -73,24 +73,15 @@ namespace Skybrud.Social.UptimeRobot.Options {
 
         #region Member methods
 
-        /// <summary>
-        /// Gets an instance of <see cref="IHttpQueryString"/> representing the GET parameters.
-        /// </summary>
-        public IHttpQueryString GetQueryString() {
-            return new SocialHttpQueryString();
-        }
+        /// <inheritdoc />
+        public IHttpRequest GetRequest() {
 
-        /// <summary>
-        /// Gets an instance of <see cref="IHttpPostData"/> representing the POST parameters.
-        /// </summary>
-        public IHttpPostData GetPostData() {
+            HttpPostData data = new HttpPostData();
 
-            SocialHttpPostData data = new SocialHttpPostData();
-
-            if (Monitors != null && Monitors.Length > 0) data.Add("monitors", String.Join("-", Monitors));
-            if (Types != null && Types.Length > 0) data.Add("types", String.Join("-", Types.Select(x => (int) x)));
-            if (Statuses != null && Statuses.Length > 0) data.Add("statuses", String.Join("-", Statuses.Select(x => (int)x)));
-            if (CustomUptimeRatios != null && CustomUptimeRatios.Length > 0) data.Add("custom_uptime_ratios", String.Join("-", CustomUptimeRatios));
+            if (Monitors != null && Monitors.Length > 0) data.Add("monitors", string.Join("-", Monitors));
+            if (Types != null && Types.Length > 0) data.Add("types", string.Join("-", Types.Select(x => (int)x)));
+            if (Statuses != null && Statuses.Length > 0) data.Add("statuses", string.Join("-", Statuses.Select(x => (int)x)));
+            if (CustomUptimeRatios != null && CustomUptimeRatios.Length > 0) data.Add("custom_uptime_ratios", string.Join("-", CustomUptimeRatios));
             if (AllTimeUptimeRatio) data.Add("all_time_uptime_ratio", "1");
             if (AllTimeUptimeDurations) data.Add("all_time_uptime_durations", "1");
             if (Logs) data.Add("logs", "1");
@@ -98,8 +89,8 @@ namespace Skybrud.Social.UptimeRobot.Options {
             if (Offset > 0) data.Add("offset", Offset);
             if (Limit > 0) data.Add("limit", Limit);
 
-            return data;
-        
+            return HttpRequest.Post("https://api.uptimerobot.com/v2/getMonitors", null, data);
+
         }
 
         #endregion

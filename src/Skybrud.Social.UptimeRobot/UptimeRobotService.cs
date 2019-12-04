@@ -44,7 +44,7 @@ namespace Skybrud.Social.UptimeRobot {
         /// </summary>
         /// <param name="apiKey">The API key of an Uptime Robot user.</param>
         public static UptimeRobotService CreateFromApiKey(string apiKey) {
-            if (String.IsNullOrWhiteSpace(apiKey)) throw new ArgumentNullException(nameof(apiKey));
+            if (string.IsNullOrWhiteSpace(apiKey)) throw new ArgumentNullException(nameof(apiKey));
             return new UptimeRobotService(new UptimeRobotClient(apiKey));
         }
 

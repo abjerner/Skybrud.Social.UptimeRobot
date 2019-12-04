@@ -51,7 +51,7 @@ namespace Skybrud.Social.UptimeRobot.Models.Monitors {
         /// <summary>
         /// Gets a timestamp for when the monitor was created.
         /// </summary>
-        public EssentialsDateTime Created  { get; }
+        public EssentialsTime Created  { get; }
 
         /// <summary>
         /// Gets the alltime uptime ratio of the monitor.
@@ -88,7 +88,7 @@ namespace Skybrud.Social.UptimeRobot.Models.Monitors {
             SubType = obj.GetEnum<UptimeRobotMonitorSubType>("type");
             Interval = obj.GetDouble("interval", TimeSpan.FromSeconds);
             Status = obj.GetEnum<UptimeRobotMonitorStatus>("status");
-            Created = obj.GetInt32("create_datetime", EssentialsDateTime.FromUnixTimestamp);
+            Created = obj.GetInt32("create_datetime", EssentialsTime.FromUnixTimestamp);
             AlltimeUptimeRatio = obj.GetFloat("all_time_uptime_ratio");
             Logs = obj.GetArray("logs", UptimeRobotLogEntry.Parse);
             Ssl = obj.GetObject("ssl", UptimeRobotMonitorSsl.Parse);

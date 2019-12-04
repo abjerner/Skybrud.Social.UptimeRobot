@@ -1,5 +1,7 @@
 ﻿using System;
-using Skybrud.Social.Http;
+using System.Net;
+using Skybrud.Essentials.Http;
+using Skybrud.Essentials.Http.Exceptions;
 using Skybrud.Social.UptimeRobot.Models.Errors;
 
 namespace Skybrud.Social.UptimeRobot.Exceptions {
@@ -7,14 +9,15 @@ namespace Skybrud.Social.UptimeRobot.Exceptions {
     /// <summary>
     /// Class representing an exception/error returned by the Uptime Robot API.
     /// </summary>
-    public class UptimeRobotHttpException : Exception {
-        
+    public class UptimeRobotHttpException : Exception, IHttpException {
+
         #region Properties
 
-        /// <summary>
-        /// Gets a reference to the underlying <see cref="SocialHttpResponse"/>.
-        /// </summary>
-        public SocialHttpResponse Response { get; }
+        /// <inheritdoc />
+        public IHttpResponse Response { get; }
+
+        /// <inheritdoc />
+        public HttpStatusCode StatusCode => Response.StatusCode;
 
         /// <summary>
         /// Gets a reference to the error returned by the API.
@@ -25,11 +28,11 @@ namespace Skybrud.Social.UptimeRobot.Exceptions {
 
         #region Constructors
 
-        internal UptimeRobotHttpException(SocialHttpResponse response) : this(response, null) {
+        internal UptimeRobotHttpException(IHttpResponse response) : this(response, null) {
             Response = response;
         }
 
-        internal UptimeRobotHttpException(SocialHttpResponse response, UptimeRobotError error) : base("Invalid response received from the Uptime Robot API") {
+        internal UptimeRobotHttpException(IHttpResponse response, UptimeRobotError error) : base("Invalid response received from the Uptime Robot API") {
             Response = response;
             Error = error;
         }

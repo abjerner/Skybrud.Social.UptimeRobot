@@ -1,5 +1,8 @@
 ﻿using System;
-using Skybrud.Social.Http;
+using Skybrud.Essentials.Http;
+using Skybrud.Essentials.Http.Client;
+using Skybrud.Essentials.Http.Collections;
+using Skybrud.Essentials.Http.Options;
 using Skybrud.Social.UptimeRobot.Endpoints.Raw;
 
 namespace Skybrud.Social.UptimeRobot {
@@ -7,7 +10,7 @@ namespace Skybrud.Social.UptimeRobot {
     /// <summary>
     /// Class representing the raw client to communicate with the Uptime Robot API.
     /// </summary>
-    public class UptimeRobotClient : SocialHttpClient {
+    public class UptimeRobotClient : HttpClient {
 
         #region Properties
 
@@ -51,16 +54,28 @@ namespace Skybrud.Social.UptimeRobot {
         #region Member methods
 
         /// <summary>
+        /// Returns the response of the request identified by the specified <paramref name="options"/>.
+        /// </summary>
+        /// <param name="options">The options for the request to the API.</param>
+        /// <returns>An instanceo of <see cref="IHttpResponse"/> representing the raw response.</returns>
+        public virtual IHttpResponse GetResponse(IHttpRequestOptions options) {
+            if (options == null) throw new ArgumentNullException(nameof(options));
+            IHttpRequest request = options.GetRequest();
+            PrepareHttpRequest(request);
+            return request.GetResponse();
+        }
+
+        /// <summary>
         /// Updates new HTTP requests with information specific to the Uptime Robot. If an <see cref="ApiKey"/> is
         /// specified, the value is appended to the HTTP post data to authenticate your requests.
         /// </summary>
         /// <param name="request">The request.</param>
-        protected override void PrepareHttpRequest(SocialHttpRequest request) {
+        protected override void PrepareHttpRequest(IHttpRequest request) {
 
-            if (request.PostData == null) request.PostData = new SocialHttpPostData();
+            if (request.PostData == null) request.PostData = new HttpPostData();
 
             // Append the access token to the POST data
-            if (!String.IsNullOrWhiteSpace(ApiKey)) {
+            if (!string.IsNullOrWhiteSpace(ApiKey)) {
                 request.PostData.Add("api_key", ApiKey);
             }
 

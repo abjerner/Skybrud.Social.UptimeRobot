@@ -1,6 +1,6 @@
 ﻿using System;
 using Newtonsoft.Json.Linq;
-using Skybrud.Social.Http;
+using Skybrud.Essentials.Http;
 using Skybrud.Social.UptimeRobot.Models.Monitors;
 
 namespace Skybrud.Social.UptimeRobot.Responses.Monitors {
@@ -12,7 +12,7 @@ namespace Skybrud.Social.UptimeRobot.Responses.Monitors {
 
         #region Constructors
 
-        private UptimeRobotGetMonitorsResponse(SocialHttpResponse response) : base(response) {
+        private UptimeRobotGetMonitorsResponse(IHttpResponse response) : base(response) {
 
             // Validate the response
             JObject body = ValidateResponse(response);
@@ -31,7 +31,7 @@ namespace Skybrud.Social.UptimeRobot.Responses.Monitors {
         /// </summary>
         /// <param name="response">The response to be parsed.</param>
         /// <returns>An instance of <see cref="UptimeRobotGetMonitorsResponse"/>.</returns>
-        public static UptimeRobotGetMonitorsResponse ParseResponse(SocialHttpResponse response) {
+        public static UptimeRobotGetMonitorsResponse ParseResponse(IHttpResponse response) {
             if (response == null) throw new ArgumentNullException(nameof(response));
             return new UptimeRobotGetMonitorsResponse(response);
         }

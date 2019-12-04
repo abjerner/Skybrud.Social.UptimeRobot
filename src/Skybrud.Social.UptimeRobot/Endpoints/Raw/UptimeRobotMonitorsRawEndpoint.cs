@@ -1,5 +1,5 @@
 ﻿using System;
-using Skybrud.Social.Http;
+using Skybrud.Essentials.Http;
 using Skybrud.Social.UptimeRobot.Options;
 
 namespace Skybrud.Social.UptimeRobot.Endpoints.Raw {
@@ -31,19 +31,19 @@ namespace Skybrud.Social.UptimeRobot.Endpoints.Raw {
         /// <summary>
         /// Gets a list of monitors.
         /// </summary>
-        /// <returns>An instance of <see cref="SocialHttpResponse"/> representing the raw response.</returns>
-        public SocialHttpResponse GetMonitors() {
-            return Client.DoHttpPostRequest("https://api.uptimerobot.com/v2/getMonitors");
+        /// <returns>An instance of <see cref="IHttpResponse"/> representing the raw response.</returns>
+        public IHttpResponse GetMonitors() {
+            return Client.Post("https://api.uptimerobot.com/v2/getMonitors");
         }
 
         /// <summary>
         /// Gets a list of monitors matching the specified <paramref name="options"/>.
         /// </summary>
         /// <param name="options">The options for the call to the API.</param>
-        /// <returns>An instance of <see cref="SocialHttpResponse"/> representing the raw response.</returns>
-        public SocialHttpResponse GetMonitors(UptimeRobotGetMonitorsOptions options) {
+        /// <returns>An instance of <see cref="IHttpResponse"/> representing the raw response.</returns>
+        public IHttpResponse GetMonitors(UptimeRobotGetMonitorsOptions options) {
             if (options == null) throw new ArgumentNullException(nameof(options));
-            return Client.DoHttpPostRequest("https://api.uptimerobot.com/v2/getMonitors", options);
+            return Client.GetResponse(options);
         }
 
         #endregion
