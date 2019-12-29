@@ -30,8 +30,7 @@ namespace Skybrud.Social.UptimeRobot.Models {
         protected EssentialsTime ParseDate(long timestamp) {
             
             if (timestamp == 0) return null;
-            
-            // TODO: Do we actually need this method now?
+
             try {
                 return EssentialsTime.FromUnixTimestamp(timestamp);
             } catch (Exception) {
