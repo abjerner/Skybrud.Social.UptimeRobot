@@ -28,6 +28,9 @@ namespace Skybrud.Social.UptimeRobot.Models {
         /// <param name="timestamp">The UNIX timestamp to be parsed.</param>
         /// <returns>An instance of <see cref="EssentialsTime"/>.</returns>
         protected EssentialsTime ParseDate(long timestamp) {
+            
+            if (timestamp == 0) return null;
+            
             // TODO: Do we actually need this method now?
             try {
                 return EssentialsTime.FromUnixTimestamp(timestamp);

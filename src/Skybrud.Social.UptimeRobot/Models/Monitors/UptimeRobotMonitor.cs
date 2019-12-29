@@ -88,7 +88,7 @@ namespace Skybrud.Social.UptimeRobot.Models.Monitors {
             SubType = obj.GetEnum<UptimeRobotMonitorSubType>("type");
             Interval = obj.GetDouble("interval", TimeSpan.FromSeconds);
             Status = obj.GetEnum<UptimeRobotMonitorStatus>("status");
-            Created = obj.GetInt32("create_datetime", EssentialsTime.FromUnixTimestamp);
+            Created = obj.GetInt64("create_datetime", ParseDate);
             AlltimeUptimeRatio = obj.GetFloat("all_time_uptime_ratio");
             Logs = obj.GetArray("logs", UptimeRobotLogEntry.Parse);
             Ssl = obj.GetObject("ssl", UptimeRobotMonitorSsl.Parse);
