@@ -1,4 +1,5 @@
 ﻿using Skybrud.Social.UptimeRobot.Endpoints.Raw;
+using Skybrud.Social.UptimeRobot.Http;
 using Skybrud.Social.UptimeRobot.Responses.Accounts;
 
 namespace Skybrud.Social.UptimeRobot.Endpoints {
@@ -33,7 +34,7 @@ namespace Skybrud.Social.UptimeRobot.Endpoints {
         #region Member methods
 
         /// <summary>
-        /// Gets the details of the account behind the current <see cref="UptimeRobotClient.ApiKey"/>.
+        /// Gets the details of the account behind the current <see cref="UptimeRobotHttpClient.ApiKey"/>.
         /// </summary>
         /// <returns>An instance of <see cref="UptimeRobotGetAccountDetailsResponse"/> representing the response.</returns>
         public UptimeRobotGetAccountDetailsResponse GetAccountDetails() {

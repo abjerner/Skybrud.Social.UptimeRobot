@@ -5,12 +5,12 @@ using Skybrud.Essentials.Http.Collections;
 using Skybrud.Essentials.Http.Options;
 using Skybrud.Social.UptimeRobot.Endpoints.Raw;
 
-namespace Skybrud.Social.UptimeRobot {
+namespace Skybrud.Social.UptimeRobot.Http {
     
     /// <summary>
     /// Class representing the raw client to communicate with the Uptime Robot API.
     /// </summary>
-    public class UptimeRobotClient : HttpClient {
+    public class UptimeRobotHttpClient : HttpClient {
 
         #region Properties
 
@@ -36,7 +36,7 @@ namespace Skybrud.Social.UptimeRobot {
         /// <summary>
         /// Initializes a new client with default options.
         /// </summary>
-        public UptimeRobotClient() {
+        public UptimeRobotHttpClient() {
             Accounts = new UptimeRobotAccountsRawEndpoint(this);
             Monitors = new UptimeRobotMonitorsRawEndpoint(this);
         }
@@ -45,7 +45,7 @@ namespace Skybrud.Social.UptimeRobot {
         /// Initializes a new client with the specified <paramref name="apiKey"/>.
         /// </summary>
         /// <param name="apiKey">The API key of your user.</param>
-        public UptimeRobotClient(string apiKey) : this() {
+        public UptimeRobotHttpClient(string apiKey) : this() {
             ApiKey = apiKey;
         }
 

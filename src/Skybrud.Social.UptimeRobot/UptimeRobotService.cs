@@ -1,5 +1,6 @@
 ﻿using System;
 using Skybrud.Social.UptimeRobot.Endpoints;
+using Skybrud.Social.UptimeRobot.Http;
 
 namespace Skybrud.Social.UptimeRobot {
 
@@ -13,7 +14,7 @@ namespace Skybrud.Social.UptimeRobot {
         /// <summary>
         /// Gets a referencer to the underlying client.
         /// </summary>
-        public UptimeRobotClient Client { get; }
+        public UptimeRobotHttpClient Client { get; }
 
         /// <summary>
         /// Gets a reference to the accounts endpoint.
@@ -29,7 +30,7 @@ namespace Skybrud.Social.UptimeRobot {
 
         #region Constructors
 
-        private UptimeRobotService(UptimeRobotClient client) {
+        private UptimeRobotService(UptimeRobotHttpClient client) {
             Client = client;
             Accounts = new UptimeRobotAccountsEndpoint(this);
             Monitors = new UptimeRobotMonitorsEndpoint(this);
@@ -45,14 +46,14 @@ namespace Skybrud.Social.UptimeRobot {
         /// <param name="apiKey">The API key of an Uptime Robot user.</param>
         public static UptimeRobotService CreateFromApiKey(string apiKey) {
             if (string.IsNullOrWhiteSpace(apiKey)) throw new ArgumentNullException(nameof(apiKey));
-            return new UptimeRobotService(new UptimeRobotClient(apiKey));
+            return new UptimeRobotService(new UptimeRobotHttpClient(apiKey));
         }
 
         /// <summary>
         /// Initializes a new service based on the specified <paramref name="client"/>.
         /// </summary>
         /// <param name="client">The client to use.</param>
-        public static UptimeRobotService CreateFromOAuthClient(UptimeRobotClient client) {
+        public static UptimeRobotService CreateFromOAuthClient(UptimeRobotHttpClient client) {
             if (client == null) throw new ArgumentNullException(nameof(client));
             return new UptimeRobotService(client);
         }

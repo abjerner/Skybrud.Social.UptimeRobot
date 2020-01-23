@@ -1,5 +1,6 @@
 ﻿using System;
 using Skybrud.Essentials.Http;
+using Skybrud.Social.UptimeRobot.Http;
 using Skybrud.Social.UptimeRobot.Options;
 
 namespace Skybrud.Social.UptimeRobot.Endpoints.Raw {
@@ -14,13 +15,13 @@ namespace Skybrud.Social.UptimeRobot.Endpoints.Raw {
         /// <summary>
         /// Gets a reference to the Uptime Robot client.
         /// </summary>
-        public UptimeRobotClient Client { get; }
+        public UptimeRobotHttpClient Client { get; }
 
         #endregion
 
         #region Constructors
 
-        internal UptimeRobotMonitorsRawEndpoint(UptimeRobotClient client) {
+        internal UptimeRobotMonitorsRawEndpoint(UptimeRobotHttpClient client) {
             Client = client;
         }
 
