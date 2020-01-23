@@ -54,18 +54,6 @@ namespace Skybrud.Social.UptimeRobot.Http {
         #region Member methods
 
         /// <summary>
-        /// Returns the response of the request identified by the specified <paramref name="options"/>.
-        /// </summary>
-        /// <param name="options">The options for the request to the API.</param>
-        /// <returns>An instanceo of <see cref="IHttpResponse"/> representing the raw response.</returns>
-        public virtual IHttpResponse GetResponse(IHttpRequestOptions options) {
-            if (options == null) throw new ArgumentNullException(nameof(options));
-            IHttpRequest request = options.GetRequest();
-            PrepareHttpRequest(request);
-            return request.GetResponse();
-        }
-
-        /// <summary>
         /// Updates new HTTP requests with information specific to the Uptime Robot. If an <see cref="ApiKey"/> is
         /// specified, the value is appended to the HTTP post data to authenticate your requests.
         /// </summary>
