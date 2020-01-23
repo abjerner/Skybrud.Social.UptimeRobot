@@ -23,6 +23,16 @@ namespace Skybrud.Social.UptimeRobot.Models.Monitors {
         /// </summary>
         public EssentialsTime DateTime  { get; }
 
+        /// <summary>
+        /// Gets the duration of the log entry.
+        /// </summary>
+        public TimeSpan Duration { get; }
+
+        /// <summary>
+        /// Gets the reason of the log entry.
+        /// </summary>
+        public UptimeRobotLogEntryReason Reason { get; }
+
         #endregion
 
         #region Constructors
@@ -34,6 +44,8 @@ namespace Skybrud.Social.UptimeRobot.Models.Monitors {
         protected UptimeRobotLogEntry(JObject obj) : base(obj) {
             Type = obj.GetEnum<UptimeRobotLogType>("type");
             DateTime = obj.GetInt64("datetime", ParseDate);
+            Duration = obj.GetDouble("duration", TimeSpan.FromSeconds);
+            Reason = obj.GetObject("reason", UptimeRobotLogEntryReason.Parse);
         }
 
         #endregion
