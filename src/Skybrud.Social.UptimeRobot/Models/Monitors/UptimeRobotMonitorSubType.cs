@@ -8,7 +8,7 @@
         /// <summary>
         /// Indicates a monitor that doesn't have a sub type.
         /// </summary>
-        Unspecified = 0,
+        None = 0,
 
         /// <summary>
         /// Indicates a port monitor that will check <strong>port 443</strong>.

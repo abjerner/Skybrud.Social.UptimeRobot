@@ -85,7 +85,7 @@ namespace Skybrud.Social.UptimeRobot.Models.Monitors {
             FriendlyName = obj.GetString("friendly_name");
             Url = obj.GetString("url");
             Type = obj.GetEnum<UptimeRobotMonitorType>("type");
-            SubType = obj.GetEnum("sub_type", UptimeRobotMonitorSubType.Unspecified);
+            SubType = obj.GetEnum("sub_type", UptimeRobotMonitorSubType.None);
             Interval = obj.GetDouble("interval", TimeSpan.FromSeconds);
             Status = obj.GetEnum<UptimeRobotMonitorStatus>("status");
             Created = obj.GetInt64("create_datetime", ParseDate);
