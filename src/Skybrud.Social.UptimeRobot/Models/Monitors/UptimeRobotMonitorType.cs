@@ -23,8 +23,12 @@
         /// <summary>
         /// Indicates a monitor that will check a given port number.
         /// </summary>
-        Port = 4
-    
+        Port = 4,
+        
+        /// <summary>
+        /// Indicates a monitor that will listen for a url endpoint to be called.
+        /// </summary>
+        Heartbeat = 5
     }
 
 }
